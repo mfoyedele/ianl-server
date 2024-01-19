@@ -11,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
     var env = builder.Environment;
  
     services.AddCors();
+    services.AddSwaggerGen();
     services.AddControllers().AddJsonOptions(x =>
     {
         // serialize enums as strings in api responses (e.g. Role)
@@ -52,6 +53,12 @@ var app = builder.Build();
     app.UseMiddleware<ErrorHandlerMiddleware>();
 
     app.MapControllers();
+}
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseAuthorization();
