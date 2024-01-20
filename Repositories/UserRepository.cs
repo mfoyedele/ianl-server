@@ -56,8 +56,8 @@ public class UserRepository : IUserRepository
     {
         using var connection = _context.CreateConnection();
         var sql = """
-            INSERT INTO Users (FirstName, LastName, Email, PhoneNumber, Address, City, State, Country, PasswordHash)
-            VALUES (@FirstName, @LastName, @Email, @PhoneNumber, @Address, @City, @State, @Country, @PasswordHash)
+            INSERT INTO Users (Title, FirstName, LastName, Email, Role, PasswordHash)
+            VALUES (@Title, @FirstName, @LastName, @Email, @Role, @PasswordHash)
         """;
         await connection.ExecuteAsync(sql, user);
     }
@@ -67,14 +67,11 @@ public class UserRepository : IUserRepository
         using var connection = _context.CreateConnection();
         var sql = """
             UPDATE Users 
-            SET FirstName = @FirstName,
+            SET Title = @Title,
+                FirstName = @FirstName,
                 LastName = @LastName, 
-                Email = @Email,
-                PhoneNumber = @PhoneNumber,
-                Address = @Address,
-                City = @City,
-                State = @State,
-                Country = @Country,                
+                Email = @Email, 
+                Role = @Role, 
                 PasswordHash = @PasswordHash
             WHERE Id = @Id
         """;
