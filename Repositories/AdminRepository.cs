@@ -32,7 +32,7 @@ public async Task<Admin> GetById(int id)
     {
         using var connection = _context.CreateConnection();
         var sql = """
-            SELECT * FROM Users 
+            SELECT * FROM Admins 
             WHERE Id = @id
         """;
         return await connection.QuerySingleOrDefaultAsync<Admin>(sql, new { id });
