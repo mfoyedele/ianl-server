@@ -56,8 +56,8 @@ public class UserRepository : IUserRepository
     {
         using var connection = _context.CreateConnection();
         var sql = """
-            INSERT INTO Users (Title, FirstName, LastName, Email, Role, PasswordHash)
-            VALUES (@Title, @FirstName, @LastName, @Email, @Role, @PasswordHash)
+            INSERT INTO Users (Title, FirstName, LastName, Email, PasswordHash)
+            VALUES (@Title, @FirstName, @LastName, @Email, @PasswordHash)
         """;
         await connection.ExecuteAsync(sql, user);
     }
@@ -70,8 +70,7 @@ public class UserRepository : IUserRepository
             SET Title = @Title,
                 FirstName = @FirstName,
                 LastName = @LastName, 
-                Email = @Email, 
-                Role = @Role, 
+                Email = @Email,                
                 PasswordHash = @PasswordHash
             WHERE Id = @Id
         """;
