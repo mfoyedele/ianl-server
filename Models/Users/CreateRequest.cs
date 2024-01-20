@@ -16,6 +16,21 @@ public class CreateRequest
     public string? Email { get; set; }
 
     [Required]
+    public string? PhoneNumber { get; set; }
+
+    [Required]
+    public string? Address { get; set; }
+
+    [Required]
+    public string? City { get; set; }
+
+    [Required]
+    public string? State { get; set; }
+
+    [Required]
+    public string? Country { get; set; }
+
+    [Required]
     [MinLength(6)]
     public string? Password { get; set; }
 
