@@ -50,12 +50,10 @@ public class DataContext
         {
             var sql = """
                 CREATE TABLE IF NOT EXISTS Users (
-                    Id SERIAL PRIMARY KEY,
-                    Title VARCHAR,
+                    Id SERIAL PRIMARY KEY,                    
                     FirstName VARCHAR,
                     LastName VARCHAR,
-                    Email VARCHAR,
-                    Role INTEGER,
+                    Email VARCHAR,                    
                     PasswordHash VARCHAR
                 );
             """;
