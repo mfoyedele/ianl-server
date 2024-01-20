@@ -53,7 +53,12 @@ public class DataContext
                     Id SERIAL PRIMARY KEY,                    
                     FirstName VARCHAR,
                     LastName VARCHAR,
-                    Email VARCHAR,                    
+                    Email VARCHAR,
+                    PhoneNumber VARCHAR, 
+                    Address VARCHAR,
+                    City VARCHAR,
+                    State VARCHAR,
+                    Country VARCHAR,
                     PasswordHash VARCHAR
                 );
             """;
