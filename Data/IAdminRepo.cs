@@ -6,9 +6,9 @@ namespace WebApi.Data
     {
         Task SaveChanges();
 
-        Task<IEnumerable<AdminModel>> GetAllAdmins();
-
+        Task<IEnumerable<AdminModel>> GetAdminAll();
         Task<AdminModel?> GetAdminById(int id);
+
         Task CreateAdmin(AdminModel adm);
     
         void DeleteAdmin(AdminModel adm);

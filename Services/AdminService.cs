@@ -6,8 +6,8 @@ namespace WebApi.Services;
 
 public interface IAdminService
 {
-    Task<IEnumerable<Admin>> GetAll();
-    Task<Admin> GetById(int id);
+    Task<IEnumerable<Admin>> GetAdminAll();
+    Task<Admin> GetAdminById(int id);
     Task Create(CreateRequest model);
     Task Update(int id, UpdateRequest model);
     Task Delete(int id);
@@ -25,12 +25,12 @@ public class AdminService : IAdminService
         throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<Admin>> GetAll()
+    public Task<IEnumerable<Admin>> GetAdminAll()
     {
         throw new NotImplementedException();
     }
 
-    public Task<Admin> GetById(int id)
+    public Task<Admin> GetAdminById(int id)
     {
         throw new NotImplementedException();
     }

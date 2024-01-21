@@ -1,17 +1,27 @@
+namespace WebApi.Data;
 using Microsoft.EntityFrameworkCore;
 using WebApi.Models.Admin;
 
 
-namespace WebApi.Data
-{
+
     public class AppDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) :base(options)
-        {
-            
-        }
+         protected readonly IConfiguration Configuration;
+
+    public AppDbContext(IConfiguration configuration)
+    {
+        Configuration = configuration;
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder options)
+    {
+        // connect to postgres with connection string from app settings
+        options.UseNpgsql(Configuration.GetConnectionString("WebApiDatabase"));
+    }
+    
+        
 
         public DbSet<AdminModel> Admins => Set<AdminModel>();
         
     }
-}
+   

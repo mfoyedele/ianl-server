@@ -29,6 +29,8 @@ var builder = WebApplication.CreateBuilder(args);
     services.AddSingleton<DataContext>();
     services.AddScoped<IUserRepository, UserRepository>();
     services.AddScoped<IUserService, UserService>();
+    services.AddScoped<IAdminRepository, AdminRepository>();
+    services.AddScoped<IAdminService, AdminService>();
 }
 
 var app = builder.Build();
