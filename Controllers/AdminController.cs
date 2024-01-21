@@ -14,13 +14,11 @@ namespace WebApi.Controllers
     [ApiController]
     public class AdminController : ControllerBase
     {
-        private IAdminService _adminService;
-        private readonly IAdminRepo _repo;
+        private IAdminService _adminService;        
         private readonly IMapper _mapper;
 
-        public AdminController(IAdminRepo repo, IMapper mapper, IAdminService adminService)
-        {
-            _repo = repo;
+        public AdminController(IMapper mapper, IAdminService adminService)        {
+            
             _mapper = mapper;
             _adminService = adminService;
 
@@ -52,8 +50,8 @@ namespace WebApi.Controllers
         public async Task<ActionResult<AdminReadDto>> CreateAdmin(AdminCreateDto admCreateDto)
         {
             var adminModel = _mapper.Map<AdminModel>(admCreateDto);
-            await _repo.CreateAdmin(adminModel);
-            await _repo.SaveChanges();
+            await _adminService.CreateAdmin(adminModel);
+            await _adminService.SaveChanges();
 
             var admReadDto = _mapper.Map<AdminReadDto>(adminModel);
             
@@ -84,7 +82,7 @@ namespace WebApi.Controllers
 
             //await _repo.UpdateAdmin(adminModelFromRepo);
 
-            await _repo.SaveChanges();
+            await _adminService.SaveChanges();
 
             return NoContent();
         }
@@ -100,7 +98,7 @@ namespace WebApi.Controllers
             }
             _mapper.Map(adminUpdateDto, adminModelFromRepo);
 
-            await _repo.SaveChanges();
+            await _adminService.SaveChanges();
 
             return NoContent();
         }

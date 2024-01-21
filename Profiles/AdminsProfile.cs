@@ -9,10 +9,10 @@ namespace WebApi.Profiles
         public AdminsProfile()
         {
             // Source -> Target
-            CreateMap<AdminModel, AdminReadDto>();
-            CreateMap<AdminCreateDto, AdminModel>();
-            CreateMap<AdminUpdateDto, AdminModel>();
-            CreateMap<AdminModel, AdminUpdateDto>();
+            CreateMap<UpdateRequest, AdminReadDto>();
+            CreateMap<AdminCreateDto, UpdateRequest>();
+            CreateMap<AdminUpdateDto, UpdateRequest>();
+            CreateMap<UpdateRequest, AdminUpdateDto>();
         }     
     }
 }

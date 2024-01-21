@@ -1,51 +1,47 @@
-namespace WebApi.Repositories;
-
-using Dapper;
 using WebApi.Entities;
-using WebApi.Helpers;
 
-public interface IAdminRepository
+namespace WebApi.Repositories
 {
-    Task<IEnumerable<Admin>> GetAll();
-    Task<Admin> GetById(int id);
-    Task<Admin> GetByEmail(string email);
+    public interface IAdminRepository
+    {
+        Task<IEnumerable<Admin>> GetAllAdmins();
+        Task<Admin> GetAdminById(int id);
+        Task<Admin> GetByEmail(string email);
+        Task Create(Admin admin);
+        Task Update(Admin admin);
+        Task Delete(int id);
+    }
+
+    public class AdminRepository : IAdminRepository
+    {
+        public Task Create(Admin admin)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Admin> GetAdminById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Admin>> GetAllAdmins()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Admin> GetByEmail(string email)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Update(Admin admin)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
-
-public class AdminRepository : IAdminRepository
-{
-    private DataContext _context;
-
-    public AdminRepository(DataContext context)
-    {
-        _context = context;
-    }
-
-    public async Task<IEnumerable<Admin>> GetAll()
-    {
-        using var connection = _context.CreateConnection();
-        var sql = """
-            SELECT * FROM Admins
-        """;
-        return await connection.QueryAsync<Admin>(sql);
-    }
-public async Task<Admin> GetById(int id)
-    {
-        using var connection = _context.CreateConnection();
-        var sql = """
-            SELECT * FROM Admins 
-            WHERE Id = @id
-        """;
-        return await connection.QuerySingleOrDefaultAsync<Admin>(sql, new { id });
-    }
-
-   public async Task<Admin> GetByEmail(string email)
-    {
-        using var connection = _context.CreateConnection();
-        var sql = """
-            SELECT * FROM Admins 
-            WHERE Email = @email
-        """;
-        return await connection.QuerySingleOrDefaultAsync<Admin>(sql, new { email });
-    }
-
- }
