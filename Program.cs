@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 {
     var services = builder.Services;
     var env = builder.Environment;
- 
+
     services.AddCors();
     services.AddSwaggerGen();
     services.AddControllers().AddJsonOptions(x =>
@@ -28,7 +28,7 @@ var builder = WebApplication.CreateBuilder(args);
     // configure DI for application services
     services.AddSingleton<DataContext>();
     services.AddScoped<IUserRepository, UserRepository>();
-    services.AddScoped<IUserService, UserService>();
+    services.AddScoped<IUserService, UserService>();    
     services.AddScoped<IAdminRepository, AdminRepository>();
     services.AddScoped<IAdminService, AdminService>();
 }

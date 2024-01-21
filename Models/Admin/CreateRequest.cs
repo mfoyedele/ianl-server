@@ -5,9 +5,6 @@ using WebApi.Entities;
 
 public class CreateRequest
 {
-    [Key]
-    public int Id { get; set; }
-
     [Required]
     public string? FirstName { get; set; }
 
