@@ -69,11 +69,11 @@ public class UserRepository : IUserRepository
             UPDATE Users 
             SET FirstName = @FirstName,
                 LastName = @LastName, 
-                Email = @Email,
-                PhoneNumber = @PhoneNumber,
-                Address = @Address,
-                City = @City,
-                State = @State,
+                Email = @Email, 
+                PhoneNumber = @PhoneNumber, 
+                Address = @Address, 
+                City = @City, 
+                State = @State, 
                 Country = @Country,                
                 PasswordHash = @PasswordHash
             WHERE Id = @Id
